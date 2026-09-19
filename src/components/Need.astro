@@ -1,85 +1,264 @@
 ---
-
+const types = [
+    {
+        image: "/alberca-rectangular.svg",
+        alt: "Alberca rectangular",
+        badge: "Clásica",
+        title: "Rectangular",
+        tagline: "Elegancia que nunca pasa de moda",
+        features: ["Ideal para nadar", "Aprovecha tu espacio"],
+        footer: "Diseño clásico",
+    },
+    {
+        image: "/alberca-diseno.svg",
+        alt: "Alberca de diseño personalizado",
+        badge: "Única",
+        title: "A tu diseño",
+        tagline: "Tu idea, hecha alberca",
+        features: ["Formas únicas", "Se adapta a tu estilo"],
+        footer: "Diseño personalizado",
+    },
+    {
+        image: "/alberca-hidromasaje.svg",
+        alt: "Alberca con hidromasaje",
+        badge: "De lujo",
+        title: "Hidromasaje",
+        tagline: "Bienestar inigualable",
+        features: ["Relajación total", "Tecnología avanzada"],
+        footer: "Diseño sofisticado",
+    },
+];
 ---
 
 
 <need>
     <div class="explain-container">
         <div class="explain-title">
-          <h1>Construimos todo tipo de albercas</h1>
-        </div> 
+          <h2>Construimos todo tipo de albercas</h2>
+        </div>
         <div class="need-title">
-        <div class="explain-card">
-            <img src="/alberca-rectangular.svg" alt="Alberca rectangular">
-            <h1>Rectangular</h1>
-            <p>Nuestras albercas rectangulares ofrecen un diseño clásico y elegante, ideal para aprovechar al máximo el espacio disponible en tu jardín. Son perfectas tanto para nadar como para disfrutar de momentos de relajación en el agua.</p>
-        </div>
-        <div class="explain-card">
-            <img src="/alberca-diseno.svg" alt="Alberca de diseño personalizado">
-            <h1>A tu diseño</h1>
-            <p>Creamos albercas personalizadas según tus ideas y necesidades. Ya sea que imagines formas únicas o características especiales, nuestro equipo transformará tu visión en una alberca espectacular que se adapta perfectamente a tu espacio y estilo de vida.</p>
-        </div>
-        <div class="explain-card">
-            <img src="/alberca-hidromasaje.svg" alt="Alberca con hidromasaje">
-            <h1>Hidromasaje</h1>
-            <p>Disfruta del máximo lujo con nuestras albercas de hidromasaje. Perfectas para relajarte después de un largo día, estas albercas combinan diseño sofisticado con tecnología avanzada para brindarte una experiencia de bienestar inigualable.</p>
-        </div>
+            {types.map((type) => (
+                <article class="explain-card">
+                    <span class="badge">{type.badge}</span>
+                    <img src={type.image} alt={type.alt}>
+                    <h3>{type.title}</h3>
+                    <p class="tagline">{type.tagline}</p>
+                    <ul class="features">
+                        {type.features.map((feature) => (
+                            <li>{feature}</li>
+                        ))}
+                    </ul>
+                    <div class="card-footer">
+                        <span>{type.footer}</span>
+                    </div>
+                </article>
+            ))}
         </div>
     </div>
 </need>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Nunito:wght@400;600;700&display=swap');
 
-    .explain-container {
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-        background-color: yellow;
+    /* Mismo ancho que la galería: solo queda un margen lateral mínimo */
+    need {
+        display: block;
+        padding: 40px 20px;
     }
 
-    .explain-container h1{
+    /* Recuadro con el mismo fondo azul marino de Contacto, resaltado con sombra azul oscura */
+    .explain-container {
+        --gold: #c9a961;
+        --gold-light: #e2c56f;
+        --navy: #101a2e;
+        --navy-deep: #070d18;
+        --muted: #a3acbb;
+
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 32px 16px 16px;
+        color: #f1f3f7;
+        font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        background:
+            radial-gradient(60% 70% at 15% 10%, rgba(201, 169, 97, 0.1), transparent 70%),
+            radial-gradient(50% 60% at 90% 100%, rgba(45, 90, 160, 0.22), transparent 70%),
+            linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        box-shadow:
+            0 30px 70px rgba(10, 25, 60, 0.55),
+            0 10px 24px rgba(16, 26, 46, 0.45);
+    }
+
+    .explain-title h2 {
+        margin-bottom: 26px;
         text-align: center;
-        font-family: "Arsenal SC";
-        padding: 10px;
+        color: #fff;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
     }
 
     .need-title {
-        display: flex;
-    }
-    
-    .explain-title {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
     }
 
     .explain-card {
-        padding: 10px;
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        margin: 10px;
+        padding: 40px 22px 22px;
+        background: rgba(255, 255, 255, 0.045);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        transition: border-color 0.25s ease, transform 0.25s ease;
     }
 
-    .explain-card img:hover {
-        transform: scale(1.1);
+    .explain-card:hover {
+        border-color: rgba(201, 169, 97, 0.5);
+        transform: translateY(-4px);
     }
 
-    .explain-card p {
-        text-align: justify;
+    /* Pestaña dorada vertical en la esquina */
+    .badge {
+        position: absolute;
+        top: 26px;
+        right: 0;
+        padding: 12px 8px;
+        color: #2a2110;
+        font-family: 'Cinzel', serif;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        writing-mode: vertical-rl;
+        background: linear-gradient(180deg, var(--gold-light) 0%, #b08a2e 100%);
+        border-radius: 8px 0 0 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
     }
 
     .explain-card img {
         width: 220px;
+        max-width: 100%;
+        margin-bottom: 14px;
         transition: transform 0.25s ease;
     }
 
+    .explain-card:hover img {
+        transform: scale(1.06);
+    }
+
+    .explain-card h3 {
+        color: var(--gold);
+        font-family: 'Cinzel', serif;
+        font-size: 1.45rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .tagline {
+        margin: 12px 0 18px;
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 700;
+        line-height: 1.35;
+        text-align: center;
+        text-decoration: underline transparent;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 6px;
+        transition: text-decoration-color 0.25s ease;
+    }
+
+    .explain-card:hover .tagline {
+        text-decoration-color: var(--gold);
+    }
+
+    .features {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 22px;
+        padding: 0;
+        list-style: none;
+    }
+
+    .features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 18px;
+        color: #d5d9e2;
+        font-size: 0.98rem;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 999px;
+    }
+
+    .features li::before {
+        content: '';
+        flex: none;
+        width: 7px;
+        height: 7px;
+        background: var(--gold);
+        transform: rotate(45deg);
+    }
+
+    /* Pie con líneas a los lados */
+    .card-footer {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        margin-top: auto;
+        color: var(--gold);
+        font-family: 'Cinzel', serif;
+        font-size: 0.86rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .card-footer::before,
+    .card-footer::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(201, 169, 97, 0.6));
+    }
+
+    .card-footer::after {
+        transform: scaleX(-1);
+    }
+
+    @media(width < 900px) {
+
+        .need-title {
+            grid-template-columns: 1fr;
+        }
+
+        .explain-card {
+            padding-top: 32px;
+        }
+    }
 
     @media(width < 700px) {
-       
-        .need-title {
-            flex-direction: column;
+
+        need {
+            padding: 32px 12px;
+        }
+
+        .explain-container {
+            padding: 24px 12px 12px;
         }
     }
 
