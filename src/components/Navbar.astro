@@ -2,201 +2,284 @@
 
 ---
 
-<navbar>
-    <nav class="navbar">
-      <div class="title">
-        <h1>Albercas Gómez</h1>
-        <p>📞 8128595397</p>
-      </div>
-      <div class="menu">
-        <a href="#home"><span class="bouncing-element">🏠</span>Inicio</a>
-        <a href="#gallery"><span class="bouncing-element">🔨</span>Galeria</a>
-        <a href="#contact"><span class="bouncing-element">📧</span>Contacto</a>
-      </div>
-      <button class="menu-toggle" aria-label="Open menu">
-        <span class="hamburger"></span>
-        <span class="hamburger"></span>
-        <span class="hamburger"></span>
-      </button>
-    </nav>
-  </navbar>
-  
+<header class="navbar-wrapper">
+  <nav class="navbar" aria-label="Navegación principal">
+    <a href="#home" class="brand" aria-label="Albercas Gómez, ir al inicio">
+      <span class="brand-text">
+        <span class="brand-name">Albercas Gómez</span>
+        <span class="brand-phone">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true">
+            <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/>
+          </svg>
+          8128595397
+        </span>
+      </span>
+    </a>
+
+    <div class="menu" id="menu">
+      <a href="#home" class="link active">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>
+        </svg>
+        Inicio
+      </a>
+      <a href="#gallery" class="link">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="2.5"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="m21 15-4.5-4.5L6 21"/>
+        </svg>
+        Galería
+      </a>
+      <a href="#contact" class="link">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/>
+          <path d="m3 7 9 6 9-6"/>
+        </svg>
+        Contacto
+      </a>
+    </div>
+
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+  </nav>
+</header>
+
 <style>
-   @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-nav {
-  border: 1px solid black;
-  color: #ededed;
-  background: linear-gradient(rgb(36, 36, 36), rgb(7, 7, 7));
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 10vh;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: auto;
-  background-color: #333;
-  padding: 10px;
-  z-index: 1000;
-}
+  .navbar-wrapper {
+    --gold: #c9a961;
+    --gold-soft: rgba(201, 169, 97, 0.12);
+    --navy-top: #17233a;
+    --navy-bottom: #0b1322;
+    --text: #f1f3f7;
+    --muted: #a3acbb;
 
-.title p {
-  margin: 0 0 15px 15px;
-}
-
-h1 {
-  margin: 10px;
-  font-size: 1.4rem;
-  font-family: "Roboto Condensed";
-  color: yellow;
-}
-
-h1:hover {
-  font-size: 1.6rem;
-  cursor: pointer;
-}
-
-.menu {
-  display: flex;
-  gap: 10px;
-  margin: 10px;
-}
-
-.menu a {
-  font-size: 18px;
-}
-
-.menu a:hover {
-  color: yellow;
-  filter: drop-shadow(0 0 6px yellow);
-  transform: scale(1.1);
-}
-
-/* Estilos para el menú hamburguesa */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  padding: 0;
-}
-
-.menu-toggle .hamburger {
-  background: yellow;
-  height: 3px;
-  width: 25px;
-  margin: 3px 0;
-  transition: 0.3s;
-}
-
-/* Menú desplegable en pantallas móviles */
-.menu {
-  display: flex;
-  gap: 60px;
-  margin: 10px;
-}
-
-.menu.active {
-  display: flex;
-}
-
-.bouncing-element {
-  font-size: 2rem;
-  display: inline-block;
-  animation: bounce 2s infinite;
-}
-
-/* Definición de la animación de rebote */
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0); /* Posición inicial y final */
-  }
-  
-  40% {
-    transform: translateY(-15px); /* Subida máxima */
-  }
-  
-  60% {
-    transform: translateY(-7px); /* Rebote intermedio */
-  }
-}
-
-@media (max-width: 500px) {
-  .menu {
-    display: none;
-    flex-direction: column;
-    width: 80%; /* Ocupa el 80% del viewport */
-    height: 80vh; /* Ocupa toda la altura del viewport */
-    text-align: center;
-    background-color: #0a0a0a;
-    opacity: 0.95;
-    position: fixed; /* Asegura que el menú esté fijo en el viewport */
+    position: fixed;
     top: 0;
-    left: 50%; /* Alinea el menú a la mitad del viewport horizontalmente */
-    transform: translateX(-50%); /* Ajusta la posición horizontal para centrar el menú */
-    padding: 10px;
+    left: 0;
+    right: 0;
     z-index: 1000;
-    overflow-y: auto; /* Permite el desplazamiento si el contenido es más largo que el viewport */
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+
+  /* Barra de borde a borde, pegada a la parte superior */
+  .navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 12px 28px;
+    color: var(--text);
+    background: linear-gradient(180deg, var(--navy-top) 0%, var(--navy-bottom) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Marca: nombre + teléfono, ambos a la misma anchura (justificado) */
+  .brand {
+    display: flex;
+    min-width: 0;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    line-height: 1.3;
+    min-width: 0;
+  }
+
+  .brand-name {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .brand-phone {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .brand-phone svg {
+    color: var(--text);
+  }
+
+  /* Enlaces */
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+  }
+
+  .link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 2px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.2s ease;
+  }
+
+  .link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+  }
+
+  .link:hover,
+  .link.active {
+    color: var(--gold);
+  }
+
+  .link.active::after,
+  .link:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Botón hamburguesa */
+  .menu-toggle {
+    display: none;
     align-items: center;
     justify-content: center;
-    gap: 60px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    color: var(--muted);
+    background: transparent;
+    border: none;
     border-radius: 10px;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease;
   }
 
-  .menu a {
-    margin-bottom: 10px;
-    font-size: 25px;
-    color: yellow;
+  .menu-toggle:hover,
+  .menu-toggle[aria-expanded='true'] {
+    color: var(--gold);
+    background: rgba(255, 255, 255, 0.06);
   }
 
-  .menu-toggle {
-    display: flex;
+  /* Móvil: el menú se despliega como tarjeta bajo la barra */
+  @media (max-width: 640px) {
+    .navbar {
+      padding: 10px 12px 10px 16px;
+    }
+
+    .menu-toggle {
+      display: flex;
+      padding-left: 0;
+      margin-left: 4px;
+    }
+
+    .menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      padding: 10px 12px 14px;
+      background: var(--navy-bottom);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+
+    .menu.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .link {
+      padding: 12px 14px;
+      font-size: 1rem;
+      border-radius: 10px;
+    }
+
+    .link::after {
+      display: none;
+    }
+
+    .link.active {
+      background: var(--gold-soft);
+    }
+
+    .brand-name {
+      font-size: 1.2rem;
+    }
   }
-
-  .title h1 {
-    font-size: 1.2rem;
-  }
-
-  .title p {
-    font-size: 14px;
-  }
-}
-
-
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  if (typeof window !== 'undefined') {
-    const menuBtn = document.querySelector('.menu-toggle') as HTMLElement;
-    const menuContent = document.querySelector('.menu') as HTMLElement;
-    const menuLinks = document.querySelectorAll('.menu a');
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const menu = document.querySelector<HTMLElement>('.menu');
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.menu .link'));
 
-    // Verificar que los elementos existen antes de agregar event listeners
-    if (menuBtn && menuContent) {
-      // Abre el menú al hacer clic en el botón de menú hamburguesa
-      menuBtn.addEventListener('click', () => {
-        menuContent.classList.toggle('active');
-      });
+  const setOpen = (open: boolean) => {
+    if (!toggle || !menu) return;
+    menu.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  };
 
-      // Cierra el menú al hacer clic en un enlace
-      menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          menuContent.classList.remove('active');
-        });
-      });
-    }
+  const setActive = (link: HTMLAnchorElement | undefined) => {
+    links.forEach((l) => l.classList.toggle('active', l === link));
+  };
 
-    // Opcional: cerrar el menú si se hace clic fuera del menú
-    document.addEventListener('click', (event) => {
-      const target = event.target as Node;
-      if (target && menuContent && menuBtn && !menuContent.contains(target) && !menuBtn.contains(target)) {
-        menuContent.classList.remove('active');
-      }
+  toggle?.addEventListener('click', () => setOpen(!menu?.classList.contains('open')));
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => {
+      setActive(link);
+      setOpen(false);
     });
-  }
-});
+  });
 
+  document.addEventListener('click', (event) => {
+    const target = event.target as Node;
+    if (menu && toggle && !menu.contains(target) && !toggle.contains(target)) setOpen(false);
+  });
+
+  // Marca como activo el enlace de la sección que se está viendo
+  const sections = links
+    .map((link) => ({ link, el: document.querySelector(link.getAttribute('href') ?? '') }))
+    .filter((s): s is { link: HTMLAnchorElement; el: Element } => s.el !== null);
+
+  const updateActive = () => {
+    const line = window.innerHeight * 0.4;
+    let current = sections[0]?.link;
+    for (const { link, el } of sections) {
+      if (el.getBoundingClientRect().top <= line) current = link;
+    }
+    setActive(current);
+  };
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
 </script>

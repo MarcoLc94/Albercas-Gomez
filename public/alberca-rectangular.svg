@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 170" fill="none">
+  <defs>
+    <linearGradient id="deck" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8f3ea"/>
+      <stop offset="1" stop-color="#d9d0bd"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0" stop-color="#93eaf5"/>
+      <stop offset="0.5" stop-color="#2eb6d8"/>
+      <stop offset="1" stop-color="#0b6f9f"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#04435f" stop-opacity="0.55"/>
+      <stop offset="0.35" stop-color="#04435f" stop-opacity="0"/>
+      <stop offset="1" stop-color="#04435f" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f4f7fa"/>
+      <stop offset="0.5" stop-color="#aab4bf"/>
+      <stop offset="1" stop-color="#eef2f6"/>
+    </linearGradient>
+    <clipPath id="pool"><rect x="26" y="38" width="168" height="90" rx="5"/></clipPath>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="135%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Terraza -->
+  <rect x="8" y="20" width="204" height="130" rx="14" fill="url(#deck)" filter="url(#shadow)"/>
+  <g stroke="#c8bda6" stroke-width="1" opacity="0.7">
+    <path d="M8 29H212M8 140H212M8 62H26M8 84H26M8 106H26M194 62H212M194 84H212M194 106H212"/>
+    <path d="M42 20V38M76 20V38M110 20V38M144 20V38M178 20V38M42 128V150M76 128V150M110 128V150M144 128V150M178 128V150"/>
+  </g>
+
+  <!-- Coronación -->
+  <rect x="20" y="32" width="180" height="102" rx="8" fill="#fdfaf3" stroke="#c9bfaa" stroke-width="0.8"/>
+
+  <!-- Agua -->
+  <rect x="26" y="38" width="168" height="90" rx="5" fill="url(#water)"/>
+  <g clip-path="url(#pool)">
+    <rect x="26" y="38" width="168" height="90" fill="url(#wall)"/>
+    <rect x="26" y="38" width="168" height="90" rx="5" stroke="#0a5d84" stroke-opacity="0.45" stroke-width="5"/>
+
+    <!-- Cáusticas -->
+    <g stroke="#ffffff" stroke-linecap="round" fill="none">
+      <path d="M32 62q12-9 24 0t24 0t24 0t24 0t24 0t24 0" stroke-opacity="0.38" stroke-width="2"/>
+      <path d="M40 84q12-9 24 0t24 0t24 0t24 0t24 0t24 0" stroke-opacity="0.3" stroke-width="2"/>
+      <path d="M34 106q12-9 24 0t24 0t24 0t24 0t24 0t24 0" stroke-opacity="0.24" stroke-width="2"/>
+      <path d="M78 50q8-5 16 0t16 0" stroke-opacity="0.5" stroke-width="1.5"/>
+      <path d="M120 96q8-5 16 0t16 0" stroke-opacity="0.4" stroke-width="1.5"/>
+    </g>
+    <ellipse cx="70" cy="52" rx="34" ry="6" fill="#ffffff" opacity="0.22"/>
+
+    <!-- Escalones -->
+    <g stroke="#ffffff" stroke-opacity="0.7" stroke-width="0.8">
+      <rect x="26" y="100" width="42" height="28" fill="#a7eef7" fill-opacity="0.85"/>
+      <rect x="26" y="108" width="32" height="20" fill="#c5f7fb" fill-opacity="0.9"/>
+      <rect x="26" y="116" width="22" height="12" fill="#e4fdff" fill-opacity="0.95"/>
+    </g>
+  </g>
+
+  <!-- Escalera cromada -->
+  <g stroke-linecap="round">
+    <path d="M160 46V64M174 46V64" stroke="#04435f" stroke-opacity="0.3" stroke-width="4" transform="translate(2 3)"/>
+    <path d="M160 24V64M174 24V64" stroke="url(#chrome)" stroke-width="3"/>
+    <path d="M160 40h14M160 50h14M160 58h14" stroke="#eef2f6" stroke-width="2"/>
+  </g>
+  <circle cx="160" cy="26" r="3.2" fill="#9aa5b1" stroke="#dfe5ea" stroke-width="0.8"/>
+  <circle cx="174" cy="26" r="3.2" fill="#9aa5b1" stroke="#dfe5ea" stroke-width="0.8"/>
+</svg>

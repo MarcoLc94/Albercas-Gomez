@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 170" fill="none">
+  <defs>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8fe8f4"/>
+      <stop offset="0.5" stop-color="#2bb3d6"/>
+      <stop offset="1" stop-color="#0a6a9c"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#04435f" stop-opacity="0.5"/>
+      <stop offset="0.4" stop-color="#04435f" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="leaf" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#6fc267"/>
+      <stop offset="1" stop-color="#2e7d3a"/>
+    </radialGradient>
+    <path id="shape" d="M48 72C44 42 88 30 112 50C134 68 158 40 182 58C204 76 190 120 158 126C128 132 118 108 96 120C72 132 44 138 34 112C28 96 50 90 48 72Z"/>
+    <clipPath id="pool"><use href="#shape"/></clipPath>
+    <filter id="shadow" filterUnits="userSpaceOnUse" x="0" y="0" width="220" height="170">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Terraza con forma libre -->
+  <use href="#shape" stroke="#cdc3ae" stroke-width="27" stroke-linejoin="round" fill="#cdc3ae" filter="url(#shadow)"/>
+  <use href="#shape" stroke="#f4efe3" stroke-width="24" stroke-linejoin="round" fill="#f4efe3"/>
+
+  <!-- Agua -->
+  <use href="#shape" fill="url(#water)" stroke="#fdfaf3" stroke-width="6" stroke-linejoin="round"/>
+  <g clip-path="url(#pool)">
+    <use href="#shape" fill="url(#wall)"/>
+    <use href="#shape" stroke="#0a5d84" stroke-opacity="0.45" stroke-width="8" stroke-linejoin="round"/>
+    <g stroke="#ffffff" stroke-linecap="round" fill="none">
+      <path d="M40 70q12-9 24 0t24 0t24 0t24 0t24 0t24 0" stroke-opacity="0.36" stroke-width="2"/>
+      <path d="M52 92q12-9 24 0t24 0t24 0t24 0t24 0" stroke-opacity="0.28" stroke-width="2"/>
+      <path d="M84 56q8-5 16 0t16 0" stroke-opacity="0.5" stroke-width="1.5"/>
+      <path d="M140 84q8-5 16 0t16 0" stroke-opacity="0.4" stroke-width="1.5"/>
+    </g>
+    <ellipse cx="82" cy="58" rx="26" ry="6" fill="#ffffff" opacity="0.24" transform="rotate(-12 82 58)"/>
+  </g>
+
+  <!-- Piedras decorativas en la orilla -->
+  <g fill="#b8ae9a" stroke="#8f8672" stroke-width="0.6">
+    <ellipse cx="128" cy="134" rx="6" ry="4"/>
+    <ellipse cx="139" cy="139" rx="4.5" ry="3"/>
+    <ellipse cx="42" cy="46" rx="5" ry="3.5"/>
+  </g>
+
+  <!-- Vegetación -->
+  <g>
+    <ellipse cx="30" cy="62" rx="14" ry="6" fill="#000" opacity="0.15"/>
+    <circle cx="26" cy="54" r="10" fill="url(#leaf)"/>
+    <circle cx="35" cy="60" r="8" fill="url(#leaf)"/>
+    <circle cx="22" cy="63" r="7" fill="url(#leaf)"/>
+    <ellipse cx="196" cy="120" rx="15" ry="6" fill="#000" opacity="0.15"/>
+    <circle cx="192" cy="112" r="10" fill="url(#leaf)"/>
+    <circle cx="201" cy="118" r="8" fill="url(#leaf)"/>
+    <circle cx="186" cy="121" r="7" fill="url(#leaf)"/>
+  </g>
+
+  <!-- Camastro -->
+  <g transform="translate(58 146)">
+    <rect x="1" y="3" width="50" height="16" rx="5" fill="#000" opacity="0.15"/>
+    <rect x="0" y="0" width="50" height="16" rx="5" fill="#ffffff" stroke="#d3cbb8" stroke-width="0.8"/>
+    <rect x="0" y="0" width="16" height="16" rx="5" fill="#e6e0d1" stroke="#d3cbb8" stroke-width="0.8"/>
+    <path d="M22 2V14M30 2V14M38 2V14" stroke="#e4ded0" stroke-width="1.5"/>
+  </g>
+</svg>
