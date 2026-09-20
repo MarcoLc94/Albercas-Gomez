@@ -1,127 +1,195 @@
 ---
 import BackgroundChanger from "../components/BgChanger.jsx"
 
+const values = [
+    {
+        icon: "/medalla.png",
+        title: "Calidad",
+        tags: ["Materiales premium", "Acabados duraderos"],
+        text: "Nos enorgullece ofrecer materiales y acabados de la más alta calidad, garantizando la durabilidad y resistencia de cada una de nuestras albercas.",
+    },
+    {
+        icon: "/trabajador.png",
+        title: "Profesionalismo",
+        tags: ["Equipo capacitado", "Del diseño a la entrega"],
+        text: "Contamos con un equipo altamente capacitado y comprometido con la excelencia en cada proyecto, desde el diseño hasta la entrega final.",
+    },
+    {
+        icon: "/satisfaccion.png",
+        title: "Satisfacción",
+        tags: ["Cada detalle cuidado", "Superamos expectativas"],
+        text: "Nos aseguramos de que cada detalle cumpla con los requerimientos de nuestros clientes, proporcionando resultados que superan sus expectativas.",
+    },
+    {
+        icon: "/tiempo-rapido.png",
+        title: "Agilidad",
+        tags: ["Dentro del plazo", "Entrega puntual"],
+        text: "Entregamos proyectos dentro del plazo acordado sin comprometer la calidad, para que disfrutes de tu alberca en el menor tiempo posible.",
+    },
+];
 ---
 
-<main>
+<main class="intro">
    <BackgroundChanger client:load />
-    <div class="valores-container">
-        <div class="valor-container">
-            <div class="valor-title-container">
-            <img  src="/medalla.png" alt="">
-            <h3>Calidad</h3>
-            </div>
-            <p>Nos enorgullece ofrecer materiales y acabados de la más alta calidad, garantizando la durabilidad y resistencia de cada una de nuestras albercas.</p>
-        </div>
-        <div class="valor-container">
-            <div class="valor-title-container">
-            <img src="/trabajador.png" alt="">
-            <h3>Profesionalismo</h3>
-            </div>
-            <p>Contamos con un equipo altamente capacitado y comprometido con la excelencia en cada proyecto, desde el diseño hasta la entrega final.</p>
-        </div>
-        <div class="valor-container">
-            <div class="valor-title-container">
-            <img src="/satisfaccion.png" alt="">
-            <h3>Satisfaccion</h3>
-            </div>
-            <p>Nos aseguramos de que cada detalle cumpla con los requirimientos de nuestros clientes, proporcionando resultados que superan sus expectativas.</p>
-        </div>
-        <div class="valor-container">
-            <div class="valor-title-container">
-            <img src="/tiempo-rapido.png" alt="">
-            <h3>Agilidad</h3>
-            </div>
-            <p id="gallery">Entregamos proyectos dentro del plazo acordado sin comprometer la calidad, para que disfrutes de tu alberca en el menor tiempo posible.</p>
+    <div class="valores-wrap">
+        <div class="valores-container">
+            {values.map((value, i) => (
+                <div class="valor-container">
+                    <div class="valor-title-container">
+                        <img src={value.icon} alt="">
+                        <h3>{value.title}</h3>
+                    </div>
+                    <ul class="valor-tags">
+                        {value.tags.map((tag) => (
+                            <li>{tag}</li>
+                        ))}
+                    </ul>
+                    <p id={i === values.length - 1 ? "gallery" : undefined}>{value.text}</p>
+                </div>
+            ))}
         </div>
     </div>
 </main>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-    
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Nunito:wght@400;600;700&display=swap');
+
+    /* Fondo azul marino compartido con el inicio; el recuadro blanco va al frente */
+    .intro {
+        --gold: #c9a961;
+        --navy: #101a2e;
+        --navy-deep: #070d18;
+
+        background:
+            radial-gradient(60% 40% at 15% 10%, rgba(201, 169, 97, 0.1), transparent 70%),
+            radial-gradient(50% 40% at 90% 100%, rgba(45, 90, 160, 0.22), transparent 70%),
+            linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+    }
+
+    .valores-wrap {
+        padding: 0 28px 56px;
+    }
+
     .valores-container {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        background-color: rgb(255, 255, 77);
-        text-align: center;
-        width: 100%;
-        height: auto;
-         
-        
-        .valor-container {
-          width: 80%%;
-          display: flex;
-          flex-direction: column;
-          align-items: center; 
-          justify-content: center; 
-          text-align: justify;
-          height: auto;
-        }
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        padding: 30px 0;
+        font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        background: #f7f8fb;
+        border-radius: 18px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    }
 
-        p {
-            margin: 15px;
-            text-align: justify;
-            width: 70%;
-        }
+    .valor-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 26px;
+        text-align: center;
+    }
+
+    /* Línea suave entre cada valor */
+    .valor-container + .valor-container {
+        border-left: 1px solid rgba(23, 35, 58, 0.12);
     }
 
     .valor-title-container {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 25vw;
-        height: auto;
-
-        h3 {
-            font-weight: 900;
-           margin: 15px;
-        }
+        gap: 12px;
     }
 
-    .valor-title-container img{
+    .valor-title-container img {
         width: 40px;
-        
     }
 
-    @media(width < 900px){
-        
-        .valor-title-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            border: 10px solid transparent;
+    .valor-title-container h3 {
+        color: #17233a;
+        font-family: 'Cinzel', serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+    }
 
-            h3 {
-                margin: 5px;
-            }
+    .valor-tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin: 16px 0 14px;
+        padding: 0;
+        list-style: none;
+    }
 
-            img {
-                margin: 10px;
-            }
+    .valor-tags li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 13px;
+        color: #17233a;
+        font-size: 0.85rem;
+        font-weight: 700;
+        background: rgba(201, 169, 97, 0.16);
+        border: 1px solid rgba(201, 169, 97, 0.55);
+        border-radius: 999px;
+    }
+
+    .valor-tags li::before {
+        content: '';
+        flex: none;
+        width: 6px;
+        height: 6px;
+        background: var(--gold);
+        transform: rotate(45deg);
+    }
+
+    .valor-container p {
+        color: #5b6577;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 1000px) {
+        .valores-container {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            row-gap: 28px;
         }
 
+        .valor-container + .valor-container {
+            border-left: none;
+        }
+
+        .valor-container:nth-child(even) {
+            border-left: 1px solid rgba(23, 35, 58, 0.12);
+        }
+
+        .valor-container:nth-child(n + 3) {
+            padding-top: 28px;
+            border-top: 1px solid rgba(23, 35, 58, 0.12);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .valores-wrap {
+            padding: 0 14px 40px;
+        }
 
         .valores-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            grid-template-columns: 1fr;
+            row-gap: 24px;
+            padding: 24px 0;
         }
 
-       .valor-container {
-        text-align: center;
-        display: flex;
-
-        p{
-            text-align: justify;
-            width: 85vw;
+        .valor-container:nth-child(even) {
+            border-left: none;
         }
-       }
-      
+
+        .valor-container:nth-child(n + 2) {
+            padding-top: 24px;
+            border-top: 1px solid rgba(23, 35, 58, 0.12);
+        }
     }
 
 </style>

@@ -2,12 +2,13 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import "./BgChanger.css";
 
 const IMAGES = [1, 2, 3, 4, 5, 6, 7];
-const AUTOPLAY_MS = 5000;
+const AUTOPLAY_MS = 3500;
 
 const BackgroundChanger = () => {
   const trackRef = useRef(null);
+  const mediaRef = useRef(null);
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [playing, setPlaying] = useState(false);
 
   const goToContact = () => {
     const access = document.getElementById("contact");
@@ -29,29 +30,54 @@ const BackgroundChanger = () => {
     setActive(Math.round(track.scrollLeft / track.clientWidth));
   };
 
-  // Avance automático, en pausa mientras el usuario interactúa
+  // "Ver galería" inicia (o pausa) el paso automático de las fotos
+  const toggleGallery = () => {
+    if (!playing) {
+      goTo(active + 1);
+      mediaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    setPlaying((value) => !value);
+  };
+
+  // Avance automático solo mientras el usuario lo haya activado
   useEffect(() => {
-    if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!playing) return;
     const id = setInterval(() => goTo(active + 1), AUTOPLAY_MS);
     return () => clearInterval(id);
-  }, [active, paused, goTo]);
+  }, [active, playing, goTo]);
 
   return (
     <section className="hero" id="home">
       <div className="hero-copy">
         <h1>Construimos albercas de todas formas y dimensiones.</h1>
-        <div className="container-button">
-          <button type="button" onClick={goToContact}>Contacto</button>
+        <div className="hero-actions">
+          <div className="container-button">
+            <button type="button" onClick={goToContact}>Contacto</button>
+          </div>
+          <button
+            type="button"
+            className={playing ? 'hero-gallery-link is-playing' : 'hero-gallery-link'}
+            onClick={toggleGallery}
+            aria-pressed={playing}
+          >
+            {playing ? (
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                <rect x="6" y="5" width="4" height="14" rx="1" />
+                <rect x="14" y="5" width="4" height="14" rx="1" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2.5" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+            )}
+            <span>{playing ? 'Pausar galería' : 'Ver galería'}</span>
+          </button>
         </div>
       </div>
 
-      <div
-        className="hero-media"
-        onPointerEnter={() => setPaused(true)}
-        onPointerLeave={() => setPaused(false)}
-        onFocusCapture={() => setPaused(true)}
-        onBlurCapture={() => setPaused(false)}
-      >
+      <div className="hero-media" ref={mediaRef}>
         <div className="hero-viewport">
           <div
             className="hero-track"
